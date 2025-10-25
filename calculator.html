@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar Savings Calculator</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f9fa;
+    padding: 20px;
+}
+.mob-wrapper {
+    max-width: 1200px;
+    margin: auto;
+}
+.solar-hero-wrapper img {
+    margin-right: 10px;
+}
+.solar-heading {
+    font-size: 28px;
+    font-weight: 600;
+}
+.solar-hero-investments {
+    font-size: 16px;
+    color: #555;
+}
+.form-wrapper {
+    margin-top: 20px;
+}
+.form-label-solar {
+    font-weight: 500;
+}
+.form-input-solar {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+.slider-form-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+.ui-slider {
+    position: relative;
+    height: 10px;
+    background: #ddd;
+    border-radius: 6px;
+}
+.ui-slider-range {
+    background: #2f38cf;
+    height: 100%;
+    border-radius: 6px;
+}
+.ui-slider-handle {
+    width: 24px;
+    height: 24px;
+    top: -7px;
+    background: #2f38cf;
+    border-radius: 50%;
+    border: none;
+    cursor: grab;
+}
+.slider-value-box {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2f38cf;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+.error-message-mobile {
+    margin-top: 5px;
+    font-size: 12px;
+    color: red;
+    display: flex;
+    align-items: center;
+}
+.error-message-mobile img {
+    margin-right: 5px;
+}
+.city-form input {
+    background: #e9ecef;
+}
+/* ---------------- Results Section ---------------- */
+.calc-results-card, .savings-result-wrapper, .investment-wrapper, .emi-wrapper, .solar-usage {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 12px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.calc-left, .calc-right, .savings-left, .savings-right, .investment-values, .investment-output, .investment-savings, .investment-roi, .emi-inputs, .emi-outputs, .solar-usage-left {
+    margin-bottom: 10px;
+}
+.calc-left-bottom .value, .calc-right-bottom .value, .savings-left-bottom .value, .savings-right-bottom .value, .investment-values .value, .investment-output .value, .investment-savings .type-value, .investment-roi .type-value, .emi-inputs .value, .emi-outputs .value, .solar-usage-desc {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+.color-gn {
+    color: #28a745;
+}
+.color-bk {
+    color: #000;
+}
+.disclaimer-div {
+    font-size: 12px;
+    margin-top: 12px;
+}
+.disc-title {
+    font-weight: 600;
+}
+.disc-desc-ol {
+    padding-left: 20px;
+}
+.middle-space-section {
+    height: 1px;
+}
+</style>
+</head>
+<body>
+
+<div class="container mob-wrapper">
+
+<div class="d-flex justify-content-between align-items-center mb-4 solar-hero">
+  <div class="d-flex align-items-center">
+    <img src="assets/img/logo/solar energy logo - Made with PosterMyWall.png" 
+         alt="Solar Logo" class="me-2 solar-logo">
+  </div>
+  <button onclick="printResults()" class="btn btn-primary btn-sm">
+    <i class="fas fa-print me-1"></i> Print Results
+  </button>
+</div>
+
+<style>
+/* Make logo responsive without compression */
+.solar-logo {
+    max-height: 60px;  /* max height */
+    width: auto;       /* maintain aspect ratio */
+    height: auto;
+}
+
+/* Adjust heading */
+.solar-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Optional: responsive tweaks */
+@media (max-width: 768px) {
+    .solar-hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .solar-heading {
+        margin-top: 8px;
+        font-size: 1.3rem;
+    }
+    .btn {
+        margin-top: 10px;
+    }
+}
+
+.general-loader-title {
+  font-size: 1.2rem;   /* increase or decrease as needed */
+}
+
+</style>
+
+
+  
+  <div class="row g-4">
+    
+
+    <!-- LEFT: Input Form -->
+    <div class="col-md-5">
+
+      <!-- HERO -->
+      <div class="d-none d-md-block solar-hero mb-3">
+        <div class="d-flex align-items-center solar-hero-wrapper">
+          <img src="https://sse-website.s3.ap-south-1.amazonaws.com/blog/energy_savings_leaf+(3).svg" alt="Energy savings" width="40" height="40">
+          <h1 class="poppins-semibold solar-heading">Solar Savings Calculator</h1>
+        </div>
+
+      </div>
+
+      <!-- CALCULATOR FORM -->
+      <section class="mobile-sc-form">
+        <form id="scalcPageForm" class="scalc-form-submission" novalidate="novalidate">
+          <div class="form-wrapper form-flex-box">
+            <div class="pincode-form">
+              <label for="homes_pincode" class="form-label-solar">Pin code</label>
+              <input type="text" class="form-input-solar" id="homes_pincode" name="pin" placeholder="Enter pin code" maxlength="6">
+              <div class="error-message-mobile invalid-pincode d-none">
+                <img src="http://sse-website.s3.ap-south-1.amazonaws.com/blog/error_outline.svg" alt="Error outline" width="16" height="17">
+                <span class="error-pin-text">Please enter a valid pincode.</span>
+              </div>
+            </div>
+            <div class="mt-2 city-form">
+              <label for="homes_city" class="form-label-solar">City</label>
+              <input type="text" class="form-input-solar" id="homes_city" name="city" placeholder="City will appear here" readonly>
+            </div>
+          </div>
+
+          <div class="form-wrapper form-flex-box mt-3">
+            <div class="silder-form">
+              <div class="slider-tooltip">
+                <label for="homes_bill_slider" class="form-label-solar mb-1">Avg electricity bill</label>
+                <img id="tooltip-info" src="https://sse-website.s3.ap-south-1.amazonaws.com/blog/info+(1).svg" alt="Info Image" width="20" height="21" title="Take a 12-month average of your electricity bills, combining all meters before averaging.">
+              </div>
+              <div class="slider-form-label">
+                <span class="slider-form-label-text">Min. ₹500</span>
+                <span class="slider-form-label-text">Max ₹50,000</span>
+              </div>
+              <div id="slider-meow"></div>
+              <input type="text" id="amount" hidden>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <!-- RIGHT: Results Section -->
+   <div class="col-md-7" id="results-section">
+
+      <!-- System Size -->
+      <section class="text-center mb-4">
+        <div class="general-loader-title text-info fw-bold mb-2">
+          <i class="fas fa-solar-panel me-2"></i> Required System Size
+        </div>
+        <div class="calc-results-card">
+          <div class="d-flex justify-content-between">
+            <div class="calc-left bg-white p-3 rounded flex-fill me-2">
+              <div class="text-primary fw-semibold mb-2"><i class="fas fa-bolt me-1"></i> System Size</div>
+              <div class="display-6 fw-bold">7.02 <small class="text-muted">kW</small></div>
+            </div>
+            <div class="calc-right bg-white p-3 rounded flex-fill ms-2">
+              <div class="text-success fw-semibold mb-2"><i class="fas fa-home me-1"></i> Roof Area</div>
+              <div class="display-6 fw-bold">416 <small class="text-muted">sq.ft</small></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Savings -->
+      <section class="text-center mb-4">
+        <div class="general-loader-title text-success fw-bold mb-2">
+          <i class="fas fa-piggy-bank me-2"></i> Your Solar Savings
+        </div>
+        <div class="savings-result-wrapper">
+          <div class="d-flex justify-content-between">
+            <div class="savings-left flex-fill bg-white p-3 rounded me-2">
+              <div class="fw-semibold text-info">Monthly</div>
+              <div class="display-6 fw-bold text-info">₹7,108</div>
+            </div>
+            <div class="savings-right flex-fill bg-white p-3 rounded ms-2">
+              <div class="fw-semibold text-success">Yearly</div>
+              <div class="display-6 fw-bold text-success">₹85,297</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Investment -->
+      <section class="text-center mb-4">
+        <div class="general-loader-title text-warning fw-bold mb-2">
+          <i class="fas fa-chart-line me-2"></i> Your Investment
+        </div>
+        <div class="investment-wrapper">
+          <div class="investment-values mb-2 bg-white rounded p-2">
+            <div class="d-flex justify-content-between"><span>Total cost of plant</span><span>₹492,000</span></div>
+            <div class="d-flex justify-content-between"><span>Central Subsidy</span><span class="text-danger">-₹78,000</span></div>
+          </div>
+          <div class="investment-output bg-white rounded p-2">
+            <div class="d-flex justify-content-between"><span>Net Cost</span><span class="fw-bold">₹414,000</span></div>
+          </div>
+          <div class="d-flex mt-3">
+            <div class="investment-savings flex-fill bg-white p-2 rounded me-2">
+              <i class="fas fa-coins text-success me-2"></i> Lifetime Savings:
+              <span class="fw-bold text-success">₹2,132,414</span>
+            </div>
+            <div class="investment-roi flex-fill bg-white p-2 rounded ms-2">
+              <i class="fas fa-percentage text-primary me-2"></i> ROI:
+              <span class="fw-bold">17.66% p.a.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EMI -->
+      <section class="text-center mb-4">
+        <div class="general-loader-title text-primary fw-bold mb-2">
+          <i class="fas fa-credit-card me-2"></i> Buy Solar at ₹0 Downpayment
+        </div>
+        <div class="emi-wrapper bg-light p-3 rounded">
+          <div class="bg-white rounded p-2 mb-2">
+            <div class="d-flex justify-content-between"><span>Minimum Down Payment</span><span>₹78,000</span></div>
+            <div class="d-flex justify-content-between"><span>Subsidy</span><span class="text-danger">-₹78,000</span></div>
+            <hr>
+            <div class="d-flex justify-content-between"><span>Net Down Payment</span><span class="text-success fw-bold">₹0</span></div>
+          </div>
+          <div class="bg-white p-2 rounded d-flex justify-content-between">
+            <span>EMI</span><span class="fw-bold text-info">₹9,209</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Environment Impact -->
+      <section class="text-center mb-4">
+        <div class="general-loader-title text-success fw-bold mb-2">
+          <i class="fas fa-leaf me-2"></i> Your Solar Saves More Than Money
+        </div>
+        <div class="solar-usage d-flex justify-content-between">
+          <div class="solar-usage-left flex-fill bg-white rounded p-2 me-2">
+            <i class="fas fa-cloud-sun text-success me-2"></i> CO₂ Mitigated
+            <div class="fw-bold text-success">8,256 Kg</div>
+          </div>
+          <div class="solar-usage-left flex-fill bg-white rounded p-2 mx-2">
+            <i class="fas fa-tree text-success me-2"></i> Trees Planted
+            <div class="fw-bold text-success">275</div>
+          </div>
+          <div class="solar-usage-left flex-fill bg-white rounded p-2 ms-2">
+            <i class="fas fa-road text-success me-2"></i> Distance Saved
+            <div class="fw-bold text-success">73,710 Kms</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+  <!-- <div id="disclaimer-info" class="mt-3 text-start small text-muted">
+    <div class="disclaimer-div">
+      <span class="disc-title fw-bold">Disclaimer: </span>
+      <ol class="disc-desc-ol mt-1">
+        <li>Monthly, yearly and 5-year Savings calculated over 25 years with 1% annual degradation and 3% inflation.</li>
+        <li>Prices/EMI are indicative. Actual cost may vary based on city, system variant, roof, panel type, inverter, mounting, lender, etc.</li>
+      </ol>
+    </div>
+  </div> -->
+
+</section>
+
+          </section>
+        </div>
+      </section>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script>
+// Enable touch support for jQuery UI slider
+(function($){
+    $.support.touch = 'ontouchend' in document;
+    if (!$.support.touch) { return; }
+
+    var mouseProto = $.ui.mouse.prototype,
+        _mouseInit = mouseProto._mouseInit,
+        touchHandled;
+
+    function simulateMouseEvent(event, simulatedType) {
+        if (event.originalEvent.touches.length > 1) { return; }
+        event.preventDefault();
+        var touch = event.originalEvent.changedTouches[0],
+            simulatedEvent = document.createEvent('MouseEvents');
+        simulatedEvent.initMouseEvent(
+            simulatedType, true, true, window, 1,
+            touch.screenX, touch.screenY,
+            touch.clientX, touch.clientY, false,
+            false, false, false, 0, null
+        );
+        event.target.dispatchEvent(simulatedEvent);
+    }
+
+    mouseProto._touchStart = function(event) {
+        var self = this;
+        if (touchHandled || !self._mouseCapture(event.originalEvent.changedTouches[0])) {
+            return;
+        }
+        touchHandled = true;
+        self._touchMoved = false;
+        simulateMouseEvent(event, 'mouseover');
+        simulateMouseEvent(event, 'mousemove');
+        simulateMouseEvent(event, 'mousedown');
+    };
+
+    mouseProto._touchMove = function(event) {
+        if (!touchHandled) return;
+        this._touchMoved = true;
+        simulateMouseEvent(event, 'mousemove');
+    };
+
+    mouseProto._touchEnd = function(event) {
+        if (!touchHandled) return;
+        simulateMouseEvent(event, 'mouseup');
+        simulateMouseEvent(event, 'mouseout');
+        if (!this._touchMoved) simulateMouseEvent(event, 'click');
+        touchHandled = false;
+    };
+
+    mouseProto._mouseInit = function() {
+        var self = this;
+        self.element
+            .on('touchstart', $.proxy(self, '_touchStart'))
+            .on('touchmove', $.proxy(self, '_touchMove'))
+            .on('touchend', $.proxy(self, '_touchEnd'));
+        _mouseInit.call(self);
+    };
+})(jQuery);
+</script>
+<script>
+// Utility: Format number with Indian locale
+function number_format(n, dec = 2) {
+    return Number(n).toLocaleString('en-IN', {
+        minimumFractionDigits: dec,
+        maximumFractionDigits: dec
+    });
+}
+
+// Calculator logic
+function calculateSolar() {
+    const bill_avg = parseFloat($("#amount").val()) || 4600;
+    const tariff = 8.5; // ₹ per kWh
+    const psh = 4.7; // peak sun hours
+    const pr = 0.82; // performance ratio
+    const area_per_kw = 8.5; // sq.m per kW
+    const cost_per_kw = 55000; // ₹ per kW
+    const subsidy_fixed = 78000; 
+    const loan_rate = 9; 
+    const loan_tenure = 60; 
+    const down_percent = 0; 
+
+    // Monthly & Daily consumption
+    const monthly_kwh = bill_avg / tariff;
+    const daily_kwh = monthly_kwh / 30;
+
+    // Required system size
+    const required_kw = daily_kwh / (psh * pr);
+    const system_kw = Math.ceil(required_kw * 100) / 100; // round 2 decimals
+    const roof_area_m2 = system_kw * area_per_kw;
+    const roof_area_ft2 = roof_area_m2 * 10.7639;
+
+    // Energy generation & savings
+    const annual_generation = system_kw * psh * 365 * pr;
+    const monthly_generation = annual_generation / 12;
+    const monthly_savings = monthly_generation * tariff;
+    const yearly_savings = monthly_savings * 12;
+
+    // Cost details
+    const total_cost = system_kw * cost_per_kw;
+    const net_cost = total_cost - subsidy_fixed;
+    const loan_principal = net_cost * (1 - down_percent / 100);
+
+    const r = loan_rate / 12 / 100;
+    const n = loan_tenure;
+    const emi = loan_principal * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+
+    const co2_mitigated = annual_generation * 0.9;
+    const trees_planted = co2_mitigated / 30;
+    const distance_saved = co2_mitigated * 8.9;
+
+    // Update UI — match your HTML structure
+    $(".calc-left .display-6.fw-bold").html(number_format(system_kw, 2) + ' <small class="text-muted">kW</small>');
+    $(".calc-right .display-6.fw-bold").html(number_format(roof_area_ft2, 2) + ' <small class="text-muted">sq.ft</small>');
+
+    $(".savings-left .display-6.fw-bold").text("₹" + number_format(monthly_savings, 0));
+    $(".savings-right .display-6.fw-bold").text("₹" + number_format(yearly_savings, 0));
+
+    $(".investment-values div:nth-child(1) span:last-child").text("₹" + number_format(total_cost, 0));
+    $(".investment-values div:nth-child(2) span:last-child").text("-₹" + number_format(subsidy_fixed, 0));
+
+    $(".investment-output div span:last-child").text("₹" + number_format(net_cost, 0));
+    $(".investment-savings .type-value").text("₹" + number_format(yearly_savings * 25, 0));
+
+    $(".emi-wrapper .d-flex.bg-white.p-2.rounded span.fw-bold.text-info").text("₹" + number_format(emi, 0));
+
+    $(".solar-usage-left:nth-child(1) .fw-bold").text(number_format(co2_mitigated, 0) + " Kg");
+    $(".solar-usage-left:nth-child(2) .fw-bold").text(number_format(trees_planted, 0));
+    $(".solar-usage-left:nth-child(3) .fw-bold").text(number_format(distance_saved, 0) + " Kms");
+}
+
+// Initial calculation
+calculateSolar();
+
+// Update when slider changes
+$("#slider-meow").on("slide slidechange", function() {
+    calculateSolar();
+});
+</script>
+
+
+<script>
+$(function() {
+    $("#slider-meow").slider({
+        range: "min",
+        min: 500,
+        max: 50000,
+        step: 100,
+        value: 4600,
+        slide: function(event, ui) {
+            $("#amount").val(ui.value);
+            $("#custom-handle").remove();
+            $(this).find(".ui-slider-handle").html('<span class="slider-value-box">₹' + ui.value + '</span>');
+            calculateSolar(); // Recalculate on slide
+        }
+    });
+    $("#custom-handle").remove();
+    $("#slider-meow .ui-slider-handle").html('<span class="slider-value-box">₹4600</span>');
+});
+</script>
+
+<script>
+  function printResults() {
+    const resultsContent = document.getElementById("results-section").innerHTML;
+    const printWindow = window.open('', '', 'height=600,width=800');
+    printWindow.document.write('<html><head><title>Solar Savings Results</title>');
+    printWindow.document.write('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">');
+    printWindow.document.write('</head><body>');
+    printWindow.document.write(resultsContent);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
+}
+
+</script>
+
+<script>
+// --- Auto-fill city name from pincode ---
+$("#homes_pincode").on("blur", async function() {
+    const pincode = $(this).val().trim();
+    const cityInput = $("#homes_city");
+    const errorBox = $(".invalid-pincode");
+
+    if (/^\d{6}$/.test(pincode)) {
+        errorBox.addClass("d-none");
+        cityInput.val("Fetching...");
+
+        try {
+            const response = await fetch(`https://api.postalpincode.in/pincode/${pincode}`);
+            const data = await response.json();
+
+            if (data[0].Status === "Success" && data[0].PostOffice && data[0].PostOffice.length > 0) {
+                const cityName = data[0].PostOffice[0].District;
+                cityInput.val(cityName);
+            } else {
+                cityInput.val("City not found");
+            }
+        } catch (error) {
+            console.error("Error fetching city:", error);
+            cityInput.val("Error fetching city");
+        }
+    } else {
+        cityInput.val("");
+        errorBox.removeClass("d-none");
+    }
+});
+</script>
+
+
+<script>
+function printResults() {
+  const resultsContent = document.getElementById("results-section").innerHTML;
+
+  // Add logo section manually
+  const logoSection = `
+    <div class="text-center mb-4">
+      <img src="assets/img/logo/solar energy logo - Made with PosterMyWall.png"
+           alt="Solar Logo"
+           style="max-height:70px; width:auto; margin-bottom:10px;">
+      <h2 style="font-size:1.4rem; font-weight:600; color:#2f38cf;">Solar Savings Calculator Results</h2>
+      <hr style="margin:15px 0;">
+    </div>
+  `;
+
+  // Create printable window
+  const printWindow = window.open('', '', 'height=600,width=800');
+  printWindow.document.write('<html><head><title>Solar Savings Results</title>');
+  printWindow.document.write('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">');
+  printWindow.document.write('</head><body>');
+  
+  // Insert logo first, then results
+  printWindow.document.write(logoSection);
+  printWindow.document.write(resultsContent);
+  
+  printWindow.document.write('</body></html>');
+  printWindow.document.close();
+  printWindow.print();
+}
+</script>
+
+
+
+</body>
+</html>
