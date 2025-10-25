@@ -8,11 +8,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="PM Surya Ghar - Rooftop solar information and portal gateway">
+    <meta name="keywords" content="PM Surya Ghar, rooftop solar, subsidy, solar rooftop, solar calculator">
 
     <!-- title -->
-    <title>ZOXO - Solar Private Limited</title>
+    <title>ZOXO - Solar Private Limited | PM SURYA GHAR</title>
 
     <!-- favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/logo/solar energy logo - Made with PosterMyWall.png">
@@ -27,62 +27,151 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
-        .process-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;  /* horizontal center */
-    text-align: center;
-    justify-content: flex-start; /* keep content below icon */
-}
+        /* ---------- Custom improvements for PM Surya Ghar (colorful public-friendly theme) ---------- */
 
-.process-item .icon {
-    display: flex;
-    align-items: center;    /* vertical center */
-    justify-content: center; /* horizontal center */
-    width: 80px;  /* adjust size as needed */
-    height: 80px; /* adjust size as needed */
-    margin-bottom: 20px;
-}
+        /* Global adjustments (keeps existing theme but adds friendly colors) */
+        .pm-hero {
+            background: linear-gradient(135deg,#ffe082 0%, #ffd54f 40%, rgba(255,255,255,0.02) 100%), url('assets/img/hero/slider-6.png');
+            background-size: cover;
+            background-position: center;
+            padding: 70px 0;
+            border-radius: 12px;
+            color: #103049;
+            box-shadow: 0 10px 30px rgba(15, 70, 90, 0.06);
+            margin-bottom: 30px;
+        }
 
-.process-item .icon img {
-    max-width: 100%;
-    max-height: 100%;
-}
+        .pm-hero .headline {
+            font-weight: 700;
+            font-size: 2.0rem;
+            margin-bottom: 12px;
+            color: #07324a;
+        }
 
-.team-img {
-    width: 100%;
-    height: 250px; /* Fixed height for all images */
-    overflow: hidden;
-    border-radius: 8px; /* optional rounded corners */
-}
+        .pm-hero p.sub {
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+            color: #0d3b66;
+        }
 
-.team-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* ensures image fills container without distortion */
-    display: block;
-}
+        .pm-cta .theme-btn {
+            background: linear-gradient(90deg, #0d7a9c, #0d3b66);
+            border: none;
+            box-shadow: 0 6px 18px rgba(13,59,102,0.18);
+            padding: 12px 22px;
+            border-radius: 40px;
+            color: #fff;
+            font-weight: 600;
+        }
 
-.team-content {
-    text-align: center;
-    margin-top: 15px;
-}
+        /* Section card */
+        .pm-card {
+            background: linear-gradient(180deg, #ffffff, #fffefc);
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(16,48,73,0.04);
+            margin-bottom: 24px;
+        }
 
-.team-content h4 {
-    margin: 0;
-    font-size: 1.1rem;
-}
+        /* Benefits grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+        .benefit {
+            text-align: center;
+            padding: 18px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,250,0.9));
+            border: 1px solid rgba(13,59,102,0.04);
+            min-height: 140px;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .benefit .icon-wrap {
+            width:64px;
+            height:64px;
+            margin: 0 auto 10px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border-radius:50%;
+            background:rgba(13,59,102,0.06);
+            font-size: 26px;
+            color:#0d3b66;
+        }
+        .benefit h4 { margin: 6px 0 0; font-size:1rem; color:#07324a; }
 
-.team-content span {
-    display: block;
-    font-size: 0.9rem;
-    color: #777;
-}
+        /* Steps (horizontal list) */
+        .steps {
+            display:flex;
+            gap:14px;
+            flex-wrap:wrap;
+        }
+        .step {
+            flex:1 1 180px;
+            background: linear-gradient(180deg,#fff,#fff);
+            padding:16px;
+            border-radius:10px;
+            border-left:5px solid #ffd54f;
+            box-shadow:0 6px 18px rgba(15,70,90,0.03);
+            min-width:180px;
+        }
+        .step h5 { margin: 6px 0 8px; color:#0d3b66; font-size:1rem; }
+        .step p { margin:0; color:#475b6b; font-size:0.95rem; }
 
+        /* FAQ */
+        .faq .card { border: none; border-radius: 10px; overflow: hidden; margin-bottom:10px; }
+        .faq .card-header { background:#fff; padding:0; }
+        .faq .btn-link {
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            width:100%;
+            padding:14px 18px;
+            color:#0d3b66;
+            font-weight:600;
+            text-decoration:none;
+        }
+        .faq .collapse { padding: 12px 18px 18px; color: #546b76; background: linear-gradient(180deg,#fff,#fff); }
 
+        /* Contact CTA */
+        .contact-cta {
+            display:flex;
+            gap:18px;
+            align-items:center;
+            justify-content:space-between;
+            padding:18px;
+            border-radius:12px;
+            background: linear-gradient(90deg,#a8e6cf,#ffd3b6);
+            color: #07324a;
+        }
+        .contact-cta a.btn-portal {
+            background:#0d3b66;
+            color:#fff;
+            padding:10px 18px;
+            border-radius:8px;
+            font-weight:700;
+            text-decoration:none;
+        }
 
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+            .steps { flex-direction:column; }
+            .contact-cta { flex-direction:column; text-align:center; gap:10px; }
+        }
+        @media (max-width: 640px) {
+            .benefits-grid { grid-template-columns: 1fr; }
+            .pm-hero { padding: 30px 18px; }
+            .pm-hero .headline { font-size: 1.5rem; }
+        }
 
-
+        /* Keep previously defined process/team styles intact (no conflict) */
+        .process-item { display:flex; flex-direction:column; align-items:center; text-align:center; justify-content:flex-start; }
+        .team-img { width:100%; height:250px; overflow:hidden; border-radius:8px; }
     </style>
 </head>
 
@@ -112,8 +201,8 @@
                     <div class="header-top-left">
                         <div class="header-top-list">
                             <ul>
-                                <li><a href="https://live.themewild.com/cdn-cgi/l/email-protection#83eaede5ecc3e6fbe2eef3efe6ade0ecee"><i class="far fa-envelopes"></i>
-                                        <span class="__cf_email__" data-cfemail="573e39313817322f363a273b327934383a">help@zoxosolar.com</span></a></li>
+                                <li><a href="mailto:help@zoxosolar.com"><i class="far fa-envelopes"></i>
+                                        <span>help@zoxosolar.com</span></a></li>
                                 <li><a href="tel:+919449675050"><i class="far fa-phone-volume"></i> +91 94496 75050</a>
                                 </li>
                                 <li><a href="#"><i class="far fa-alarm-clock"></i> Sun - Fri (08AM - 10PM)</a></li>
@@ -184,74 +273,24 @@
                               <li class="nav-item">
   <a class="nav-link" href="index.html">Home</a>
 </li>
-<!-- <li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    About
-  </a>
-  <ul class="dropdown-menu fade-down" aria-labelledby="aboutDropdown">
-    <li><a class="dropdown-item" href="about.html">About Us</a></li>
-    <li><a class="dropdown-item" href="team.html">Our Team</a></li>
-  </ul>
-</li> -->
-
  <li class="nav-item">
   <a class="nav-link" href="https://service.zoxosolar.com/" target="_blank">Services</a>
 </li>
-
-                                <!-- <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Pages</a>
-                                    <ul class="dropdown-menu fade-down">
-                                       
-                                        <li class="dropdown-submenu">
-                                            <a class="dropdown-item dropdown-toggle" href="#">Authentication</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="login.html">Login</a></li>
-                                                <li><a class="dropdown-item" href="register.html">Register</a></li>
-                                                <li><a class="dropdown-item" href="forgot-password.html">Forgot
-                                                        Password</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown-submenu">
-                                            <a class="dropdown-item dropdown-toggle" href="#">Legal</a>
-                                            <ul class="dropdown-menu">
-                                                </li>
-                                                <li><a class="dropdown-item" href="terms.html">Terms Of Service</a></li>
-                                                <li><a class="dropdown-item" href="privacy.html">Privacy Policy</a></li>
-                                            </ul>
-                                        </li> -->
-                                        <!-- <li><a class="dropdown-item" href="faq.html">Faq's</a></li> -->
-                                        <!-- <li><a class="dropdown-item" href="testimonial.html">Testimonials</a></li> -->
-                                    <!-- </ul> -->
-                                <!-- </li> -->
-                                <!-- <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Shop</a>
-                                    <ul class="dropdown-menu fade-down">
-                                        <li><a class="dropdown-item" href="shop.html">Shop</a></li>
-                                        <li><a class="dropdown-item" href="shop-cart.html">Shop Cart</a></li>
-                                        <li><a class="dropdown-item" href="shop-checkout.html">Shop Checkout</a></li>
-                                        <li><a class="dropdown-item" href="shop-single.html">Shop Single</a></li>
-                                    </ul>
-                                </li> -->
-                                 <li class="nav-item">
+ <li class="nav-item">
   <a class="nav-link" href="https://shop.zoxosolar.com/" target="_blank">Shop</a>
 </li>
-                                                              <li class="nav-item">
+ <li class="nav-item">
   <a class="nav-link" href="calculator.html">Solar Calculator</a>
 </li>
-                                                           <li class="nav-item">
+ <li class="nav-item">
   <a class="nav-link" href="https://loan.zoxosolar.com/">Loan</a>
 </li>
-                              <!-- <li class="nav-item">
-  <a class="nav-link" href="blog.html">Blog</a>
-</li> -->
    <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Vendor</a>
                                     <ul class="dropdown-menu fade-down">
                                         <li><a class="dropdown-item" href="https://shop.zoxosolar.com/vendor/auth/login">Vendor Login</a></li>
                                         <li><a class="dropdown-item" href="https://shop.zoxosolar.com/vendor/auth/registration/index">Vendor Registration</a></li>
                                         <li><a class="dropdown-item" href="https://shop.zoxosolar.com/vendors">All Vendors</a></li>
-
                                     </ul>
                                 </li>
 
@@ -328,7 +367,7 @@
                             </div>
                             <div class="content">
                                 <h6>Email</h6>
-                                <a href="https://live.themewild.com/cdn-cgi/l/email-protection#c9a0a7afa689acb1a8a4b9a5ace7aaa6a4"><span class="__cf_email__" data-cfemail="cda4a3aba28da8b5aca0bda1a8e3aea2a0">help@zoxosolar.com</span></a>
+                                <a href="mailto:help@zoxosolar.com">help@zoxosolar.com</a>
                             </div>
                         </li>
                         <li>
@@ -337,7 +376,7 @@
                             </div>
                             <div class="content">
                                 <h6>Phone</h6>
-                                <a href="tel:+21236547898">+91 94496 75050</a>
+                                <a href="tel:+919449675050">+91 94496 75050</a>
                             </div>
                         </li>
                         <li>
@@ -367,7 +406,7 @@
 
     <main class="main">
 
-        <!-- hero area -->
+        <!-- hero area (existing hero slider retained) -->
         <div class="hero-section">
             <div class="hero-slider owl-carousel">
                 <div class="hero-single" style="background-image: url(assets/img/hero/slider-1.jpg);">
@@ -448,65 +487,250 @@
         </div>
         <!-- hero area end -->
 
-  <header>
-    <h1>PM SURYA GHAR — Rooftop Solar for Your Home</h1>
-    <p>Bring Solar Home — Save on Electricity, Increase Energy Independence</p>
-  </header>
+        <!-- ---------- Improved PM SURYA GHAR Section (public-friendly, colorful) ---------- -->
+        <div class="container">
+            <section class="pm-hero pm-card">
+                <div class="row align-items-center">
+                    <div class="col-md-7">
+                        <h2 class="headline">PM SURYA GHAR — Rooftop Solar for Every Home</h2>
+                        <p class="sub">Bring solar to your rooftop — save on electricity bills, reduce carbon footprint, and access government benefits with easy online registration and verified installers.</p>
 
-  <section>
-    <h2>About PM SURYA GHAR</h2>
-    <p>PM SURYA GHAR is the national rooftop-solar platform that connects homeowners with certified installers, helps with online registration and monitoring, and simplifies access to government benefits. Installing rooftop solar reduces electricity bills, increases resilience, and contributes to a cleaner environment.</p>
-  </section>
+                        <div class="d-flex gap-3 pm-cta">
+                            <a href="https://pmsuryaghar.gov.in/#/" target="_blank" class="theme-btn">Apply Now</a>
+                            <a href="calculator.html" class="theme-btn" style="background:transparent; color:#0d3b66; border: 2px solid #0d3b66;">Check Eligibility</a>
+                        </div>
 
-  <section>
-    <h2>Key Benefits</h2>
-    <ul>
-      <li><strong>Lower electricity bills</strong> — generate power on your roof and reduce monthly bills.</li>
-      <li><strong>Environment-friendly</strong> — cut carbon emissions and rely on renewable energy.</li>
-      <li><strong>Transparent process</strong> — register, track, and validate installations online.</li>
-      <li><strong>Verified vendors</strong> — choose from MNRE-registered and trusted installers.</li>
-      <li><strong>Support & incentives</strong> — access government-driven schemes and local utility facilitation.</li>
+                        <div class="mt-3" style="color:#234f63;">
+                            <small><strong>Need help?</strong> Call our helpline: <a href="tel:+919449675050" style="color:#0d3b66; text-decoration:underline;">+91 94496 75050</a> or email <a href="mailto:help@zoxosolar.com" style="color:#0d3b66; text-decoration:underline;">help@zoxosolar.com</a></small>
+                        </div>
+                    </div>
+                    <div class="col-md-5 text-center">
+                        <img src="assets/img/hero/slider-6.png" alt="PM Surya Ghar" style="max-width:100%; border-radius:10px; box-shadow:0 10px 30px rgba(13,59,102,0.06);">
+                    </div>
+                </div>
+            </section>
+
+            <!-- About quick card -->
+     <div class="pm-card" style="background: linear-gradient(135deg, #fffbe6, #fff8c4); border-radius: 15px; box-shadow: 0 6px 15px rgba(0,0,0,0.1); padding: 30px 25px; margin: 25px 0; transition: all 0.3s ease;">
+    <div class="row align-items-center">
+        <div class="col-md-8">
+            <h3 style="color:#07324a; margin-top:0; font-size:26px; font-weight:700; border-left:6px solid #f9a825; padding-left:12px;">
+                ☀️ About PM SURYA GHAR
+            </h3>
+            <p style="color:#475b6b; font-size:17px; line-height:1.7; margin-top:10px;">
+                <strong>PM SURYA GHAR</strong> is the national rooftop-solar platform that connects homeowners with certified installers, helps with online registration and monitoring, and simplifies access to central and state incentives. Installing rooftop solar reduces electricity bills, increases resilience, and contributes to a cleaner environment.
+            </p>
+        </div>
+        <div class="col-md-4 text-md-end text-center">
+            <a href="pm_surya.html" class="btn" 
+               style="background: linear-gradient(90deg, #ffd54f, #ffb300); color:#07324a; padding:12px 20px; border-radius:10px; font-weight:700; text-decoration:none; box-shadow:0 4px 10px rgba(0,0,0,0.15); transition: all 0.3s ease;">
+               🔗 Portal Info
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Optional hover animation -->
+<style>
+.pm-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+.pm-card .btn:hover {
+    background: linear-gradient(90deg, #ffb300, #ffd54f);
+    transform: scale(1.05);
+}
+</style>
+
+
+            <!-- Benefits -->
+            <div class="pm-card">
+                <h3 style="color:#07324a; margin-top:0;">Key Benefits</h3>
+                <div class="benefits-grid mt-3">
+                    <div class="benefit">
+                        <div class="icon-wrap"><i class="fas fa-wallet"></i></div>
+                        <h4>Lower Electricity Bills</h4>
+                        <p style="font-size:0.9rem; color:#6b7f88;">Generate power on your roof and reduce monthly bills.</p>
+                    </div>
+                    <div class="benefit">
+                        <div class="icon-wrap"><i class="fas fa-seedling"></i></div>
+                        <h4>Eco-friendly</h4>
+                        <p style="font-size:0.9rem; color:#6b7f88;">Cut carbon emissions and support renewable energy.</p>
+                    </div>
+                    <div class="benefit">
+                        <div class="icon-wrap"><i class="fas fa-shield-alt"></i></div>
+                        <h4>Verified Installers</h4>
+                        <p style="font-size:0.9rem; color:#6b7f88;">Choose MNRE-registered and trusted vendors.</p>
+                    </div>
+                    <div class="benefit">
+                        <div class="icon-wrap"><i class="fas fa-hand-holding-usd"></i></div>
+                        <h4>Subsidies & Support</h4>
+                        <p style="font-size:0.9rem; color:#6b7f88;">Access government incentives and easier financing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Steps to apply -->
+            <div class="pm-card">
+                <h3 style="color:#07324a; margin-top:0;">How It Works — 5 Simple Steps</h3>
+                <div class="steps mt-3">
+                    <div class="step">
+                        <h5><i class="fas fa-search"></i> 1. Check Eligibility & Estimate</h5>
+                        <p>Use the portal calculator or consult an installer to estimate system size and expected savings.</p>
+                    </div>
+                    <div class="step">
+                        <h5><i class="fas fa-file-alt"></i> 2. Request Quotes</h5>
+                        <p>Compare quotes, warranties, and after-sales support from certified vendors.</p>
+                    </div>
+                    <div class="step">
+                        <h5><i class="fas fa-user-plus"></i> 3. Register & Apply</h5>
+                        <p>Create an account on the PM SURYA GHAR portal and upload required documents and selected vendor details.</p>
+                    </div>
+                    <div class="step">
+                        <h5><i class="fas fa-tools"></i> 4. Installation & Inspection</h5>
+                        <p>Installer completes the work and utility / local authority performs inspection and net-metering setup.</p>
+                    </div>
+                    <div class="step">
+                        <h5><i class="fas fa-play-circle"></i> 5. Monitor & Start Saving</h5>
+                        <p>Track system performance online and claim central/state incentives when applicable.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documents required -->
+  <div class="pm-card" style="background: linear-gradient(135deg, #fffbe6, #fff9cc); border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); padding: 25px; transition: transform 0.3s ease;">
+    <h3 style="color:#07324a; margin-top:0; font-size: 24px; text-align:center; font-weight:700; border-bottom:3px solid #f9c301; display:inline-block; padding-bottom:5px;">📄 Documents Typically Required</h3>
+    <ul style="list-style:none; padding:15px 20px; margin:0; font-size:17px; color:#333;">
+        <li style="margin:10px 0; display:flex; align-items:center;">
+            <span style="color:#f9a825; font-size:20px; margin-right:10px;">✔️</span> Proof of identity (Aadhaar / Passport / Voter ID)
+        </li>
+        <li style="margin:10px 0; display:flex; align-items:center;">
+            <span style="color:#f9a825; font-size:20px; margin-right:10px;">✔️</span> Proof of ownership or NOC from landlord/owner
+        </li>
+        <li style="margin:10px 0; display:flex; align-items:center;">
+            <span style="color:#f9a825; font-size:20px; margin-right:10px;">✔️</span> Latest electricity bill
+        </li>
+        <li style="margin:10px 0; display:flex; align-items:center;">
+            <span style="color:#f9a825; font-size:20px; margin-right:10px;">✔️</span> Technical quote from MNRE-registered installer
+        </li>
+        <li style="margin:10px 0; display:flex; align-items:center;">
+            <span style="color:#f9a825; font-size:20px; margin-right:10px;">✔️</span> Bank details (for subsidy transfers)
+        </li>
     </ul>
-  </section>
+</div>
 
-  <section>
-    <h2>Who’s Eligible</h2>
-    <ul>
-      <li>Residential homeowners, housing societies, and individual flats (subject to local rules).</li>
-      <li>Roof/terrace must be structurally suitable and have adequate sunlight exposure.</li>
-      <li>Subsidy/benefit eligibility may vary by state and utility — check your local scheme on the portal.</li>
-    </ul>
-  </section>
+            <!-- FAQ + Contact CTA Row -->
+            <div class="row g-3">
+                <div class="col-md-8">
+                    <div class="pm-card faq">
+                        <h3 style="color:#07324a; margin-top:0;">Frequently Asked Questions</h3>
+                        <div class="accordion" id="faqAccordion">
+                            <div class="card">
+                                <div class="card-header" id="faqHeading1">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                                            Who is eligible for PM SURYA GHAR?
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="faqCollapse1" class="collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                                    <div class="card-body">
+                                        Residential homeowners, housing societies and individual flats are typically eligible. Eligibility may vary by state/utility; check the portal for detailed rules.
+                                    </div>
+                                </div>
+                            </div>
 
-  <section>
-    <h2>How It Works — 5 Simple Steps</h2>
-    <ol>
-      <li><strong>Check eligibility & estimate:</strong> Use the portal calculator or consult an installer to estimate system size and savings.</li>
-      <li><strong>Request quotes:</strong> Compare quotes, warranties, and after-sales support from certified vendors.</li>
-      <li><strong>Register:</strong> Create an account and upload details along with chosen vendor estimate.</li>
-      <li><strong>Installation & inspection:</strong> Installer completes work; your utility conducts inspection and net-metering setup.</li>
-      <li><strong>Monitor & claim benefits:</strong> Track status on portal and claim central/state incentives.</li>
-    </ol>
-  </section>
+                            <div class="card">
+                                <div class="card-header" id="faqHeading2">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                                            Will I get a subsidy or financial aid?
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="faqCollapse2" class="collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                                    <div class="card-body">
+                                        Subsidy availability depends on central/state policies and your system size. The portal helps you identify applicable incentives.
+                                    </div>
+                                </div>
+                            </div>
 
-  <section>
-    <h2>Documents Typically Required</h2>
-    <ul>
-      <li>Proof of identity (Aadhaar / Passport / Voter ID)</li>
-      <li>Proof of ownership or NOC from landlord/owner</li>
-      <li>Latest electricity bill</li>
-      <li>Technical quote from MNRE-registered installer</li>
-      <li>Bank details (for subsidy transfers)</li>
-    </ul>
-  </section>
+                            <div class="card">
+                                <div class="card-header" id="faqHeading3">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                                            How long does installation take?
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="faqCollapse3" class="collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
+                                    <div class="card-body">
+                                        Typical installations for rooftop solar (residential) take between 3–10 working days depending on system size, site readiness and utility procedures.
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- /accordion -->
+                    </div>
+                </div>
 
-  <div class="cta">
-    <h2>Ready to go solar?</h2>
-    <p>Create your free account on PM SURYA GHAR, request quotes from certified vendors, and start your rooftop solar journey today.</p>
-    <a href="https://pmsuryaghar.gov.in/#/" target="_blank">Apply Now</a>
-  </div>
+                <div class="col-md-4">
+                    <div class="pm-card contact-cta">
+                        <div>
+                            <h4 style="margin:0;">Ready to go solar?</h4>
+                            <p style="margin:6px 0 0;">Create an account on PM SURYA GHAR and request quotes from certified vendors.</p>
+                        </div>
+                        <div style="text-align:right;">
+                            <a href="https://pmsuryaghar.gov.in/#/" class="btn-portal" target="_blank">Apply on Portal</a>
+                            <div style="font-size:0.9rem; margin-top:8px; color:#07324a;">Or call: <a href="tel:+919449675050" style="color:#07324a; text-decoration:underline;">+91 94496 75050</a></div>
+                        </div>
+                    </div>
 
-     <footer class="footer-area">
+                  <div class="pm-card" style="background: linear-gradient(135deg, #e3f2fd, #fffde7); border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); padding: 25px 30px; margin: 30px 0; transition: all 0.3s ease;">
+    <h3 style="margin-top:0; color:#07324a; font-size:24px; font-weight:700; text-align:center; border-bottom:3px solid #f9a825; display:inline-block; padding-bottom:5px;">
+        📞 Contact & Support
+    </h3>
+    <div style="margin-top:20px; text-align:center; color:#475b6b; font-size:17px; line-height:1.7;">
+        <p style="margin:5px 0;">
+            <strong>Email:</strong> 
+            <a href="mailto:help@zoxosolar.com" style="color:#f57f17; text-decoration:none; font-weight:600;">
+                help@zoxosolar.com
+            </a>
+        </p>
+        <p style="margin:5px 0;">
+            <strong>Address:</strong> 2nd Floor, Maruti Compounder Hospital, Guru Nagar, Bidar
+        </p>
+        <a href="mailto:help@zoxosolar.com" 
+           style="display:inline-block; background: linear-gradient(90deg, #ffca28, #ffb300); color:#07324a; padding:10px 20px; border-radius:8px; font-weight:700; text-decoration:none; margin-top:15px; box-shadow:0 4px 10px rgba(0,0,0,0.15); transition: all 0.3s ease;">
+           ✉️ Get in Touch
+        </a>
+    </div>
+</div>
+
+<!-- Optional hover animation -->
+<style>
+.pm-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+.pm-card a:hover {
+    background: linear-gradient(90deg, #ffb300, #ffca28);
+    transform: scale(1.05);
+}
+</style>
+
+                </div>
+            </div>
+
+            <!-- Final CTA -->
+            <div class="pm-card text-center" style="margin-top:22px;">
+                <h4 style="margin-bottom:10px; color:#07324a;">Start your rooftop solar journey today</h4>
+                <a href="https://pmsuryaghar.gov.in/#/" target="_blank" class="theme-btn" style="background:linear-gradient(90deg,#0d7a9c,#0d3b66); padding:12px 26px; border-radius:40px; color:#fff;">Apply on PM SURYA GHAR Portal</a>
+            </div>
+        </div>
+        <!-- ---------- End PM SURYA GHAR section ---------- -->
+
+
+     <footer class="footer-area" style="margin-top:40px;">
         <div class="footer-shape">
             <img src="assets/img/shape/08.png" alt="">
         </div>
@@ -552,8 +776,6 @@
                                     <li><a href="blog.html"><i class="far fa-angle-double-right"></i>Update News</a></li>
                                     <li><a href="faq.html"><i class="far fa-angle-double-right"></i>faq</a></li>
                                     <li><a href="pm_surya.html">PM Surya Ghar</a></li>
-
-
                                 </ul>
                             </div>
                         </div>
@@ -598,7 +820,7 @@
                                         </div>
                                         <div class="content">
                                             <h6>Mail Us</h6>
-                                            <a href="https://live.themewild.com/cdn-cgi/l/email-protection#1970777f76597c61787469757c377a7674"><span class="__cf_email__" data-cfemail="9cf5f2faf3dcf9e4fdf1ecf0f9b2fff3f1">help@zoxosolar.com</span></a>
+                                            <a href="mailto:help@zoxosolar.com">help@zoxosolar.com</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -655,8 +877,25 @@ All Rights Reserved. | Created by <a href="https://zilitech.com" target="_blank"
     <script src="assets/js/main.js"></script>
 
     <script>
-  document.getElementById("date").textContent = new Date().getFullYear();
-</script>
+      // footer year
+      document.getElementById("date").textContent = new Date().getFullYear();
+
+      // simple small tweak: stop hero slider autoplay if present (keeps page calm). If your main.js has settings, this won't conflict, but keep as safe fallback:
+      (function(){
+          if (typeof $.fn.owlCarousel !== 'undefined') {
+              $('.hero-slider').owlCarousel({
+                  items:1,
+                  loop:true,
+                  autoplay:true,
+                  autoplayTimeout:6000,
+                  autoplayHoverPause:true,
+                  nav:false,
+                  dots:true,
+                  animateOut: 'fadeOut'
+              });
+          }
+      })();
+    </script>
 
 
 </body>
