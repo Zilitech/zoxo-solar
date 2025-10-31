@@ -18,7 +18,7 @@ try {
     $message = $_POST['message'] ?? '';
 
     // Insert into the database
-    $sql = "INSERT INTO quote_requests (name, email, phone, service, message)
+    $sql = "INSERT INTO quote_data (name, email, phone, service, message)
             VALUES (:name, :email, :phone, :service, :message)";
     $stmt = $conn->prepare($sql);
     $stmt->execute([
