@@ -1,14 +1,13 @@
 <?php
-// Database connection info from Hostinger PostgreSQL
-$host = "postgresql.hostinger.in";   // replace with your actual host
-$port = "5432";
-$dbname = "your_database_name";
-$user = "your_username";
-$password = "your_password";
+// Database connection info from Hostinger MySQL
+$host = "auth-db1191.hstgr.io";   // 🔹 replace with your actual Hostinger MySQL hostname
+$dbname = "u166377717_zoxosolar"; // 🔹 replace with your actual DB name
+$user = "u166377717_zoxosolar";        // 🔹 replace with your actual DB username
+$password = "Zilitech@2025";    // 🔹 replace with your actual DB password
 
 try {
-    // Connect to PostgreSQL on Hostinger
-    $conn = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
+    // Connect to MySQL on Hostinger
+    $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Get form data safely
