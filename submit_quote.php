@@ -1,6 +1,6 @@
 <?php
 // Database connection info from Hostinger MySQL
-$host = "auth-db1191.hstgr.io";   // 🔹 replace with your actual Hostinger MySQL hostname
+$host = "localhost";   // 🔹 replace with your actual Hostinger MySQL hostname
 $dbname = "u166377717_zoxosolar"; // 🔹 replace with your actual DB name
 $user = "u166377717_zoxosolar";        // 🔹 replace with your actual DB username
 $password = "Zilitech@2025";    // 🔹 replace with your actual DB password
