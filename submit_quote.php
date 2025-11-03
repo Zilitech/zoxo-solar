@@ -7,7 +7,7 @@ $host = "82.112.226.186";
 $port = "5432";
 $dbname = "mydb";
 $user = "myuser";
-$password = "mypassword";
+$password = "Zilitech@2025";
 
 $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
 if (!$conn) {
