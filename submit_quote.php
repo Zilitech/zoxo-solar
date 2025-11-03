@@ -1,32 +1,36 @@
 <?php
-$host = "auth-db1191.hstgr.io"; // 👈 exact hostname from hPanel
-$dbname = "u166377717_zoxosolar";
-$user = "u166377717_zoxosolar";
-$password = "Zilitech@2025"; // 👈 your updated DB password
+// PostgreSQL connection settings
+$host = "82.112.226.186";
+$port = "5432";
+$dbname = "mydb";
+$user = "myuser";
+$password = "mypassword";
 
-try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// Connect to PostgreSQL
+$conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
 
-    $name = $_POST['name'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $phone = $_POST['phone'] ?? '';
-    $service = $_POST['service'] ?? '';
-    $message = $_POST['message'] ?? '';
-
-    $sql = "INSERT INTO quote_data (name, email, phone, service, message)
-            VALUES (:name, :email, :phone, :service, :message)";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([
-        ':name' => $name,
-        ':email' => $email,
-        ':phone' => $phone,
-        ':service' => $service,
-        ':message' => $message
-    ]);
-
-    echo "<script>alert('Your request has been submitted successfully!'); window.location.href='index.html';</script>";
-} catch (PDOException $e) {
-    echo "Database connection failed: " . $e->getMessage();
+if (!$conn) {
+    die("❌ Connection failed: " . pg_last_error());
 }
+
+// Get form data safely
+$name = htmlspecialchars($_POST['name']);
+$email = htmlspecialchars($_POST['email']);
+$phone = htmlspecialchars($_POST['phone']);
+$service = htmlspecialchars($_POST['service']);
+$message = htmlspecialchars($_POST['message']);
+
+// Insert data into table (make sure this table exists)
+$query = "INSERT INTO quote_data (name, email, phone, service, message)
+          VALUES ($1, $2, $3, $4, $5)";
+$result = pg_query_params($conn, $query, array($name, $email, $phone, $service, $message));
+
+if ($result) {
+    echo "<h3>✅ Thank you, $name! Your quote request has been submitted successfully.</h3>";
+} else {
+    echo "❌ Error inserting data: " . pg_last_error($conn);
+}
+
+// Close connection
+pg_close($conn);
 ?>
