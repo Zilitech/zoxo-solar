@@ -1429,7 +1429,7 @@
                         <h4>Request A Quote</h4>
                         <p>There are many solar solutions available, but most lack trust and transparency — Zoxo Solar ensures reliable, verified, and smarter energy choices for everyone.</p>
                     </div>
-<form action="submit_quote.php" method="POST">
+<form id="quoteForm" method="POST">
   <div class="row">
     <div class="col-md-6 mb-3">
       <div class="form-group">
@@ -1491,6 +1491,35 @@
     </div>
   </div>
 </form>
+
+<!-- Message will appear here -->
+<div id="formResponse" class="mt-3"></div>
+
+<!-- Add this script at bottom of your HTML -->
+<script>
+document.getElementById("quoteForm").addEventListener("submit", async function(e) {
+  e.preventDefault(); // stop page reload
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  // Send form data to PHP
+  const response = await fetch("submit_quote.php", {
+    method: "POST",
+    body: formData
+  });
+
+  // Get text response (from PHP echo)
+  const result = await response.text();
+
+  // Show the message below the form
+  document.getElementById("formResponse").innerHTML = result;
+
+  // Optionally reset the form
+  form.reset();
+});
+</script>
+
 
 
                 </div>
